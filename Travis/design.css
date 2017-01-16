@@ -1,0 +1,182 @@
+i{
+	padding: 2px;
+}
+/* ----- Function-like boxes -----*/
+.close{
+	/*position: absolute;*/
+    right: 1px;
+   top: 0px;
+   float: right;
+   display: none;
+}
+.funcbox:hover > .close, .object:hover > .close, .array:hover > .close{
+   display: block;
+}
+
+.func{
+	background: #3182bd;
+	border: thin solid #3182bd;
+
+
+}
+.funcbox{
+	/*position: relative;*/
+	max-width:600px; 
+	border-radius: 5px; 
+	min-height: 45px;
+	color: white;
+	margin: 5px;
+}
+.funcName{
+	min-width: 15px;
+	/*border: thin solid #ccc;*/
+	padding-left: 6px;
+	padding-right: 6px;
+}
+
+.funcBody{
+	
+	overflow-y: scroll;
+	padding: 5px;
+	margin-bottom: 3px;
+	margin-top: 3px;
+}
+/* ----- OTHER BOXES -----*/
+.object{	 
+	background: grey;
+	border: thin solid blue;
+	border-radius: 5px;
+	padding: 3px;
+	margin: 5px;
+}
+.objectName{
+	border-radius: 5px 0px 9px 0px;
+
+	background: blue;
+	display: inline-block;
+	padding: 3px 8px 2px 8px;
+	margin-top: -4px;
+    margin-left: -4px;
+
+}
+/* ----- ARRAY Box -----*/
+.array{	 
+	background: grey;
+	border: thin solid purple;
+	border-radius: 5px;
+	padding: 3px;
+	margin: 5px;
+}
+.arrayName{
+	border-radius: 5px 0px 9px 0px;
+
+	background: purple;
+	display: inline-block;
+	padding: 3px 8px 2px 8px;
+	margin-top: -4px;
+    margin-left: -4px;
+
+}
+/* ----- ARGUMENTS -----*/
+.args{
+
+	background: #eee;
+	color: darkblue;
+	min-width: 15px;
+	height: 20px;
+	padding-left: 6px;
+	padding-right: 6px;
+	padding-bottom:2px;
+	font-weight: 600;
+	border-radius: 3px;
+}
+/* ----- LOOPS -----*/
+.func .funcBody{
+    background: #333;
+}
+.forloop .funcBody{
+	background: #555;
+}
+.forEachloop{
+	border: thin solid yellow; 
+	background: yellow;
+		color: black;
+}
+.forloop{
+	border: thin solid orange; 
+	background: orange;
+}
+.whileloop{
+	border: thin solid red; 
+	background: red;
+}
+.loopName{
+	min-width: 15px;
+	/*border: thin solid grey;*/
+	padding-left: 6px;
+	padding-right: 6px;
+}
+.loopBody{
+	    /*overflow-y: scroll;*/
+		padding: 5px;
+		background: #555;
+		margin-bottom: 3px;
+		margin-top: 3px;
+		color: white;
+}
+
+/* ----- COMMENTS/HINTS -----*/
+.comment{	 
+    color: lightgreen;
+	padding: 6px;
+}
+
+.comment .close{
+   float: right;
+   position: relative;
+}
+.comment div{
+    float: none;	 
+	z-index: 1000;
+	max-width: 400px;
+	display: none;
+	position: absolute;
+	background: grey;
+	border: thin solid lightgreen;
+	border-radius: 5px;
+	padding: 3px;
+}
+.comment:hover div{	 
+	display: inline;
+}
+
+   /* ----- PANEL -----*/
+.optionsPanel{
+	position: absolute;
+	right: 1px;
+	background: grey;
+	border: thin solid blue;
+	border-radius: 5px;
+	padding: 3px;
+	margin: 5px;
+}
+.hint{	 
+	padding: 6px;	
+}
+.hint div{	 
+	z-index: 1000;
+	max-width: 400px;
+	display: none;
+	position: absolute;
+	background: grey;
+	border: thin solid lightgreen;
+	border-radius: 5px;
+	padding: 3px;
+	color: white;
+}
+.hint:hover div{	 
+	display: inline;
+	top: 1px;
+	left: 1px;
+}
+
