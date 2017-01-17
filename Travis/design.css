@@ -1,66 +1,74 @@
-i{
-	padding: 2px;
-}
+
 /* ----- Function-like boxes -----*/
 .close{
 	/*position: absolute;*/
-    right: 1px;
+  right: 1px;
    top: 0px;
    float: right;
    display: none;
 }
-.funcbox:hover > .close, .object:hover > .close, .array:hover > .close{
+.func:hover > .close, .object:hover > .close, .array:hover > .close{
    display: block;
 }
 
 .func{
-	background: #3182bd;
-	border: thin solid #3182bd;
-
-
+	background: #727272; /* Old browsers */
+	background: -moz-linear-gradient(top,  #727272 0%, #0e0e0e 58%, #0e0e0e 60%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  #727272 0%,#0e0e0e 58%,#0e0e0e 60%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  #727272 0%,#0e0e0e 58%,#0e0e0e 60%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  padding: 3px;
+	border-radius: 7px 7px 0px 0px;
 }
+
+.global{
+	  position:absolute;
+		left:100px;
+		top:200px;
+}
+
 .funcbox{
-	/*position: relative;*/
-	max-width:600px; 
-	border-radius: 5px; 
+  margin: 10px;
+	min-width:400px;
+	max-width:600px;
+	border-radius: 7px;
 	min-height: 45px;
+	max-height: 600px;
 	color: white;
-	margin: 5px;
+	background: #333;
+	border: solid black;
+	border-width: 0px 1px 2px 1px;
 }
 .funcName{
 	min-width: 15px;
-	/*border: thin solid #ccc;*/
 	padding-left: 6px;
 	padding-right: 6px;
 }
-
+.objectName{
+	border-radius: 5px 0px 9px 0px;
+	background: blue;
+	display: inline-block;
+	padding: 3px 8px 2px 8px;
+	margin-top: -4px;
+  margin-left: -4px;
+}
 .funcBody{
-	
+
 	overflow-y: scroll;
 	padding: 5px;
 	margin-bottom: 3px;
 	margin-top: 3px;
 }
 /* ----- OTHER BOXES -----*/
-.object{	 
+.object{
 	background: grey;
 	border: thin solid blue;
 	border-radius: 5px;
 	padding: 3px;
 	margin: 5px;
 }
-.objectName{
-	border-radius: 5px 0px 9px 0px;
 
-	background: blue;
-	display: inline-block;
-	padding: 3px 8px 2px 8px;
-	margin-top: -4px;
-    margin-left: -4px;
-
-}
 /* ----- ARRAY Box -----*/
-.array{	 
+.array{
 	background: grey;
 	border: thin solid purple;
 	border-radius: 5px;
@@ -69,17 +77,14 @@ i{
 }
 .arrayName{
 	border-radius: 5px 0px 9px 0px;
-
 	background: purple;
 	display: inline-block;
 	padding: 3px 8px 2px 8px;
 	margin-top: -4px;
     margin-left: -4px;
-
 }
 /* ----- ARGUMENTS -----*/
 .args{
-
 	background: #eee;
 	color: darkblue;
 	min-width: 15px;
@@ -98,16 +103,16 @@ i{
 	background: #555;
 }
 .forEachloop{
-	border: thin solid yellow; 
+	border: thin solid yellow;
 	background: yellow;
 		color: black;
 }
 .forloop{
-	border: thin solid orange; 
+	border: thin solid orange;
 	background: orange;
 }
 .whileloop{
-	border: thin solid red; 
+	border: thin solid red;
 	background: red;
 }
 .loopName{
@@ -126,7 +131,12 @@ i{
 }
 
 /* ----- COMMENTS/HINTS -----*/
-.comment{	 
+.comment .Remove{
+	margin-right: 10px;
+	color:red:
+}
+
+.comment{
     color: lightgreen;
 	padding: 6px;
 }
@@ -135,8 +145,8 @@ i{
    float: right;
    position: relative;
 }
-.comment div{
-    float: none;	 
+.comment span{
+    float: none;
 	z-index: 1000;
 	max-width: 400px;
 	display: none;
@@ -144,39 +154,52 @@ i{
 	background: grey;
 	border: thin solid lightgreen;
 	border-radius: 5px;
-	padding: 3px;
+	padding: 3px 10px 3px 10px;
 }
-.comment:hover div{	 
+
+.comment:hover span{
 	display: inline;
 }
 
    /* ----- PANEL -----*/
 .optionsPanel{
-	position: absolute;
+	height: 100vh;
+	position: fixed;
 	right: 1px;
-	background: grey;
-	border: thin solid blue;
-	border-radius: 5px;
+	background: #555;
+	border-left: thin solid blue;
 	padding: 3px;
-	margin: 5px;
-}
-.hint{	 
-	padding: 6px;	
-}
-.hint div{	 
+	width:45px;
 	z-index: 1000;
-	max-width: 400px;
+}
+.optionsPanel i{
+	text-align: center;
+	font-size: 30px;
+}
+.hint{
+	padding: 6px;
+}
+.hint div{
+	z-index: 1000;
+	max-width: 100px;
 	display: none;
 	position: absolute;
-	background: grey;
-	border: thin solid lightgreen;
-	border-radius: 5px;
+	background: #111;
+	border: thick solid gray;
+	border-radius: 15px;
 	padding: 3px;
 	color: white;
 }
-.hint:hover div{	 
-	display: inline;
-	top: 1px;
-	left: 1px;
+.hint:hover div{
+	display: inline-block;
+	bottom: 5px;
+	right: 30px;
 }
-
+.hint:hover i{
+	color: #981515;
+	text-shadow: 1px 2px 5px white;
+}
+body{ margin: 0; padding: 0; }
+i{
+	padding: 2px;
+}

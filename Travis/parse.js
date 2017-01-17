@@ -1,4 +1,5 @@
-var Comment = '<span class="comment" spellcheck="true"><i class="fa fa-book"></i><div contentEditable="true">This could be yet another comment</div></span>';
+var Comment = '<span class="comment" spellcheck="true"><i class="fa fa-book"></i><span  contentEditable="true"><i class="Remove fa fa-times-circle fa"></i>Comment</span></span>';
+//var Comment = '<span class="comment" spellcheck="true"><i class="fa fa-book"></i><div contentEditable="true">This could be yet another comment</div></span>';
 var While = '<div class="funcbox whileloop"><i class="fa fa-spinner fa"></i><span class="loopName" contentEditable="false">while</span><span class="args" contentEditable="true">true</span><div class="close" ><i class="fa fa-trash-o fa"></i></div><div class="loopBody" contentEditable="true"><span class="comment" spellcheck="true"><i class="fa fa-book"></i><div contentEditable="true">This is the inner loop that does something</div></span><div class="line" contentEditable="true">do.something()</div></div></div>';
 var forEach = '<div class="funcbox forEachloop"><i class="fa fa-refresh fa"></i><span class="loopName" contentEditable="true">MyArray.forEach</span><span class="args" contentEditable="true">element</span><div class="close" ><i class="fa fa-trash-o fa"></i></div><div class="loopBody" contentEditable="true"><span class="comment" spellcheck="true"><i class="fa fa-book"></i><div contentEditable="true">This is the inner loop that does something</div></span><div class="line" contentEditable="true">do.something()</div></div></div>';
 var forLoop = '<div class="funcbox forloop"><i class="fa fa-refresh fa"></i><span class="loopName" contentEditable="false">for</span><span class="args" contentEditable="true">var j=0; j<50; j++</span><div class="close" ><i class="fa fa-trash-o fa"></i></div><div class="loopBody" contentEditable="true"><span class="comment" spellcheck="true"><i class="fa fa-book"></i><div contentEditable="true">This is the inner loop that does something</div></span><div class="line" contentEditable="true">do.something()</div></div></div>';
@@ -8,13 +9,31 @@ var array = '<div class="array"  contentEditable="true"><div class="arrayName"  
 var sel, range;
 var LastSelected;
 
+
+window.onload = function() {
+            var div = document.getElementById('editable');
+            div.onclick = function(e) {
+                this.contentEditable = true;
+                this.focus();
+                this.style.backgroundColor = '#E0E0E0';
+                this.style.border = '1px dotted black';
+            }
+
+            div.onmouseout = function() {
+                this.style.backgroundColor = '#ffffff';
+                this.style.border = '';
+                this.contentEditable = false;
+            }
+        }
+
+
 window.onload=function(){
-	var el = document.getElementById('func');
+	var el = document.getElementById('All');
 		el.onclick = function(e) {
 		    LastSelected = e.target;
 		    	LastSelected.focus();
-		    	sel = window.getSelection();	 
-		    	range = sel.getRangeAt(0);   
+		    	sel = window.getSelection();
+		    	range = sel.getRangeAt(0);
 		};
 	 el = document.getElementById('forloop');
 		el.onclick = function() {
@@ -27,7 +46,7 @@ window.onload=function(){
 	 el = document.getElementById('while');
 		el.onclick = function() {
 		    pasteHtmlAtCaret(While);
-		};		
+		};
 	 el = document.getElementById('function');
 		el.onclick = function() {
 		    pasteHtmlAtCaret(Funct);
@@ -50,14 +69,16 @@ window.onload=function(){
 		    pasteHtmlAtCaret(array);
 		};
 ///////////// delete module. ()
-	var links = document.getElementsByClassName('close');
+var elem = document.getElementsByClassName('Remove');
+		for (var i = 0; i < elem.length; i++) {
+				var link = elem[i];
+				link.onclick = remove;
+			}
+var links = document.getElementsByClassName('close');
 	for (var i = 0; i < links.length; i++) {
-		
 		  var link = links[i];
 		  link.onclick = remove;
 		}
-
-
 };
 
 //Comment, while, forEach forLoop, function
@@ -68,6 +89,7 @@ window.onload=function(){
 function pasteHtmlAtCaret(html) {
     //alert(range);
     //alert(sel);
+		//event.stopPropagation();
     if (window.getSelection) {
         // IE9 and non-IE
         //sel = window.getSelection();
@@ -84,7 +106,7 @@ function pasteHtmlAtCaret(html) {
                 lastNode = frag.appendChild(node);
             }
             range.insertNode(frag);
-            
+
             // Preserve the selection
             if (lastNode) {
                 range = range.cloneRange();
@@ -101,13 +123,17 @@ function pasteHtmlAtCaret(html) {
 
     var el = LastSelected.getElementsByClassName('close')[0];
 		    el.onclick = remove;
+		var elem = LastSelected.getElementsByClassName('Remove')[0];
+				elem.onclick = remove;
 };
 
 //////////////////////////////////////////////////////////////////////
 // Remove html elements.
 function remove(e) {
+	//alert("hello")
 	var element = e.target;
 	//alert(element.parentNode.parentNode.parentNode.innerHTML)
 	var mod = element.parentNode.parentNode;
 	mod.parentNode.removeChild(mod);
+	//event.stopPropagation();
 }
