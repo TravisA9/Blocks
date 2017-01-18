@@ -7,10 +7,17 @@
    float: right;
    display: none;
 }
-.funcbox:hover > .close,.func:hover > .close, .object:hover > .close, .array:hover > .close{
+/*.funcbox:hover > .close,  */
+.head:hover > .close{
    display: block;
 }
 
+/* :not(.comment>span)  object*/
+.funcbox *:not(i){
+	font-family: "Lucida Console", "Courier New";
+	font-size: 16px;
+	line-height: 1.4;
+}
 .func{
 	background: #727272; /* Old browsers */
 	background: -moz-linear-gradient(top,  #727272 0%, #0e0e0e 58%, #0e0e0e 60%); /* FF3.6-15 */
@@ -41,7 +48,7 @@
 	padding-left: 6px;
 	padding-right: 6px;
 }
-.objectName{
+.type .Name{
 	border-radius: 5px 0px 9px 0px;
 	background: blue;
 	display: inline-block;
@@ -49,8 +56,7 @@
 	margin-top: -4px;
   margin-left: -4px;
 }
-.funcBody{
-
+.Body{
 	/*overflow-y: scroll;*/
 	overflow: scroll;
 	padding: 5px;
@@ -62,29 +68,27 @@
 	max-height: 600px;
 
 }
-.funcBody::-webkit-scrollbar {
+.Body::-webkit-scrollbar {
     width: 8px;
 	height: 8px;
     opacity: .3;
 }
 
-.funcBody::-webkit-scrollbar-track {
+.Body::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-
-
 }
-.funcBody::-webkit-scrollbar-thumb:hover {
+.Body::-webkit-scrollbar-thumb:hover {
 	opacity: 1;
 }
 
-.funcBody::-webkit-scrollbar-thumb {
+.Body::-webkit-scrollbar-thumb {
   background-color: #555;
   border-radius: 9px;
   outline: 1px solid #333;
 
 }
 /* ----- OTHER BOXES -----*/
-.object{
+.type{
 	background: grey;
 	border: thin solid blue;
 	border-radius: 5px;
@@ -100,7 +104,7 @@
 	padding: 3px;
 	margin: 5px;
 }
-.arrayName{
+.dataBox span{
 	border-radius: 5px 0px 9px 0px;
 	background: purple;
 	display: inline-block;
@@ -121,10 +125,10 @@
 	border-radius: 3px;
 }
 /* ----- LOOPS -----*/
-.func .funcBody{
+.func .Body{
     background: #333;
 }
-.forloop .funcBody{
+.forloop .Body{
 	background: #555;
 }
 .forEachloop{
@@ -164,7 +168,11 @@
 	padding: 6px;
 	position: relative;
 }
-.comment i{display: inline;}
+.comment i{
+	display: inline;
+	/*font-size: 12px;*/
+	padding: 0px;
+}
 .comment .close{
    float: right;
    position: relative;
@@ -182,8 +190,11 @@
 	border: thin solid lightgreen;
 	border-radius: 5px;
 	padding: 3px 10px 3px 10px;
+	font-family: Arial, Helvetica, sans-serif
 }
 .remove{
+	width:15px;
+	display: inline-block;
 	margin-right: 10px;
 	color:red:
 }
