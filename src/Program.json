@@ -1,0 +1,53 @@
+{
+  "items": [
+    {
+          "links": [],
+          "position":"602, 8, 0, 0",
+          "name": "Arc",
+          "args": ":&gt; GeomAbstract",
+          "type": "type",
+          "code": [{"text":"xc::Int64\nyc::Int64\nradius::Int64\nangle1::Int64\nangle2::Int64\n\nArc() = new()"}],
+          "Docs": "This declares the type and whatnot... \nblah blah blah..."
+    },{
+          "links": [],
+          "position":"157, 6, 0, 0",
+          "name": "MyArray",
+          "args": "",
+          "type": "array",
+          "code": [{"text":"1 2 3 4"}],
+          "Docs": "This declares... \nblah blah blah..."
+    },{
+          "links": [],
+          "position":"132, 129, 0, 0",
+          "name": "SetupCanvas",
+          "args": "",
+          "type": "",
+          "code": [{"text":"using Cairo\nc = CairoRGBSurface(256,256);\ncr = CairoContext(c);\nsave(cr);\n\n  set_source_rgb(cr,0.8,0.8,0.8);\nrectangle(cr,0.0,0.0,256.0,256.0);\nfill(cr);\nrestore(cr);\nMakeConcentricArcs(MyArray, 10)  "}],
+          "Docs": "This declares... \nblah blah blah..."
+    },{
+          "links": [],
+          "position":"95, 502, 0, 0",
+          "name": "MakeConcentricArcs",
+          "args": "steps::Array{Float64}, increase::Float64",
+          "type": "function",
+          "code": [{"text":"degrees = pi/180.0"},{
+                    "name": "for",
+                    "args": "j in 1:length(steps)",
+                    "type": "for",
+                    "code": [{"text":"MyArc = Arc(  128.0, 128.0, steps[j]*increase ,45.0  * (pi/180.0), 180.0 * (pi/180.0)  )\nDrawArc(MyArc)"}],
+                    "Docs": "This declares... \nblah blah blah..."
+                }
+          ],
+          "Docs": "This declares... \nblah blah blah..."
+    },{
+          "links": [],
+          "position":"1319, 876, 0, 0",
+          "name": "DrawArc",
+          "args": "MyArc::Arc",
+          "type": "function",
+          "code": [{"text":"xc, yc, radius, angle1, angle2 = MyArc\n\nset_line_width(cr, 10.0);\narc(cr, xc, yc, radius, angle1, angle2);\nstroke(cr);\n\nset_source_rgba(cr, 1, 0.2, 0.2, 0.6);\nset_line_width(cr, 6.0);\n\narc(cr, xc, yc, 10.0, 0, 2*pi);\nfill(cr);\n\narc(cr, xc, yc, radius, angle1, angle1);\nline_to(cr, xc, yc);\narc(cr, xc, yc, radius, angle2, angle2);\nline_to(cr, xc, yc);\nstroke(cr);\n\nmove_to(cr,0.0,12.0);\nset_source_rgb(cr, 0,0,0);\nshow_text(cr,Libc.strftime(time()));\nwrite_to_png(c,\"sample_arc.png\");"}],
+          "Docs": "This declares... \nblah blah blah..."
+    }
+
+  ]
+}
