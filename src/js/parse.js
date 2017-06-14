@@ -79,8 +79,10 @@ var codeBlocks = document.getElementsByClassName('Body');
   punctuation = /([{}[\];,.:])/g; // removed these: ()
 	newline = /\\n|\\r/g; // removed these: ()
   lines = /(.*)\s/g //(?:(.+?)(?=\\n))(\\n)/g; //
-  var keyword = /\b(abstract|baremodule|begin|bitstype|break|catch|ccall|const|continue|do|else|elseif|end|export|finally|for|function|global|if|immutable|import|importall|let|local|macro|module|print|println|quote|return|try|type|typealias|using|while)\b/g;
+  keyword = /\b(abstract|baremodule|begin|bitstype|break|catch|ccall|const|continue|do|else|elseif|end|export|finally|for|function|global|if|immutable|import|importall|let|local|macro|module|print|println|quote|return|try|type|typealias|using|while)\b/g;
+  boolean = /\b(true|false)\b/g;
 
+scopes = /\b(function|while|do|type|struct|for|if|else|elseif|try|catch|finally|end)\b/g;
 var content = '# Some numbers \n e123 \n 3.1415926535 \n 0x1234 \n wsh = WebSocketHandler() do req, client \n global connections \n @show connections[client.id] = client \n while true # This is a comment! \n msg = read(client) \n msg = decodeMessage(msg) \n if startswith(msg, "setusername:") \n println("SETTING USERNAME: $msg") \n usernames[client.id] = msg[13:end] \n end \n if startswith(msg, "say:") \n println("EMITTING MESSAGE: $msg") \n for (k,v) in connections \n if k != client.id \n write(v, (usernames[client.id] * ": " * msg[5:end])) \n end \n end \n end \n end \n end \n \n'
 
 // classes: .Body{ .kwd .str .pct .op .num, .bl .fnc .cmt }
