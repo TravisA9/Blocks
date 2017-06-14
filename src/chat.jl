@@ -38,16 +38,14 @@ httph = HttpHandler() do req::Request, res::Response
 
   page = ""
   if ismatch(r"/?username=Hello/",req.resource)
-    #println("hello")
-    #page = dir*"/client.html"
-     Response(readstring(dir*"\\client.html"))
+     Response(readstring(dir*"/html/client.html"))
   else
     uri = URI(req.resource)
     key = match(r"(?:\.(\w+$))", uri.path)[1]
     mime = mimetypes[ key ]
-
     # println(dir, "     ", replace(uri.path, "/", "\\"), "     Key: ", mime)
-    Response(200, Dict{AbstractString,AbstractString}([("Content-Type",mime)]),readstring(dir* replace(uri.path, "/", "\\") ))
+    # for windows Response(200, Dict{AbstractString,AbstractString}([("Content-Type",mime)]),readstring(dir* replace(uri.path, "/", "\\") ))
+    Response(200, Dict{AbstractString,AbstractString}([("Content-Type",mime)]),readstring(dir* uri.path ))
   end
 
 end
